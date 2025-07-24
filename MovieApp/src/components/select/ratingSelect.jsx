@@ -4,7 +4,7 @@ import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 
-export default function GenreSelect() {
+export default function Ratingselect() {
   const [age, setAge] = React.useState('');
 
   const handleChange = (event) => {
@@ -13,7 +13,7 @@ export default function GenreSelect() {
 
   return (
     <FormControl sx={{ m: 1, minWidth: 120 }} size="small">
-      <InputLabel id="demo-select-small-label">Genre</InputLabel>
+      <InputLabel id="demo-select-small-label">Rating</InputLabel>
       <Select
         labelId="demo-select-small-label"
         id="demo-select-small"

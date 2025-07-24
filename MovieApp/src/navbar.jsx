@@ -6,6 +6,9 @@ import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import InputBase from '@mui/material/InputBase';
 import SearchIcon from '@mui/icons-material/Search';
+import GenreSelect from './components/select/Genreselect';
+import Ratingselect from './components/select/ratingSelect';
+import Rating from '@mui/material/Rating';
 
 
 const Search = styled('div')(({ theme }) => ({
@@ -55,7 +58,7 @@ const MainLogo = {
 export default function Navbar() {
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static" style={{backgroundColor:'#000000ff'}}>
+      <AppBar position="static">
         <Toolbar>
           <Typography
             variant="h6"
@@ -75,6 +78,8 @@ export default function Navbar() {
               inputProps={{ 'aria-label': 'search' }}
             />
           </Search>
+        <GenreSelect/>
+        <Ratingselect />
         </Toolbar>
       </AppBar>
     </Box>
