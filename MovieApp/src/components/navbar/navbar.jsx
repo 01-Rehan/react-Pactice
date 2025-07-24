@@ -6,8 +6,8 @@ import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import InputBase from '@mui/material/InputBase';
 import SearchIcon from '@mui/icons-material/Search';
-import GenreSelect from './components/select/Genreselect';
-import Ratingselect from './components/select/ratingSelect';
+import GenreSelect  from '../select/Genreselect';
+import Ratingselect from '../select/ratingSelect'
 import Rating from '@mui/material/Rating';
 
 
@@ -78,7 +78,7 @@ export default function Navbar() {
               inputProps={{ 'aria-label': 'search' }}
             />
           </Search>
-        <GenreSelect/>
+        <GenreSelect />
         <Ratingselect />
         </Toolbar>
       </AppBar>
