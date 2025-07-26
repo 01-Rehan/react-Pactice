@@ -8,8 +8,12 @@ import InputBase from "@mui/material/InputBase";
 import SearchIcon from "@mui/icons-material/Search";
 import GenreSelect from "../select/Genreselect";
 import Ratingselect from "../select/ratingSelect";
-import LanguageSelector from "../select/languageSelect"
+import LanguageSelector from "../select/languageSelect";
 import Rating from "@mui/material/Rating";
+import { useDispatch, useSelector } from "react-redux";
+import { setSearchValue } from "../../slice/MovieSlice";
+import debounce from "lodash/debounce";
+import { useEffect, useMemo } from "react";
 
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
@@ -56,31 +60,64 @@ const MainLogo = {
 };
 
 export default function Navbar() {
+  const dispatch = useDispatch();
+
+  const { SearchValue } = useSelector((state) => state.Movies);
+
+  const debouncedDispatch = useMemo(
+    () =>
+      debounce((value) => {
+        dispatch(setSearchValue(value));
+      }, 500), 
+    [dispatch]
+  );
+
+  useEffect(() => {
+    return () => {
+      debouncedDispatch.cancel();
+    };
+  }, [debouncedDispatch]);
+
+  const searchHandler = (e) => {
+    debouncedDispatch(e.target.value);
+  };
+
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static">
-        <Toolbar>
-          <Typography
-            variant="h6"
-            noWrap
-            component="div"
-            sx={{ display: { xs: "none", sm: "block" } }}
-            style={MainLogo}
+      <AppBar position="static" style={{ backgroundColor: "black" }}>
+        <Toolbar sx={{ display: "flex", justifyContent: "space-between" }}>
+          <Box
+            sx={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+            }}
           >
-            MovieApp
-          </Typography>
-          <Search>
-            <SearchIconWrapper>
-              <SearchIcon />
-            </SearchIconWrapper>
-            <StyledInputBase
-              placeholder="Search Movie…"
-              inputProps={{ "aria-label": "search" }}
-            />
-          </Search>
-          <GenreSelect />
-          <Ratingselect />
-          <LanguageSelector />
+            <Typography
+              variant="h6"
+              noWrap
+              component="div"
+              sx={{ display: { xs: "none", sm: "block" } }}
+              style={MainLogo}
+            >
+              MovieApp
+            </Typography>
+            <Search>
+              <SearchIconWrapper>
+                <SearchIcon />
+              </SearchIconWrapper>
+              <StyledInputBase
+                placeholder="Search Movie…"
+                inputProps={{ "aria-label": "search" }}
+                onChange={searchHandler}
+              />
+            </Search>
+          </Box>
+          <Box>
+            <LanguageSelector />
+            <Ratingselect />
+            <GenreSelect />
+          </Box>
         </Toolbar>
       </AppBar>
     </Box>

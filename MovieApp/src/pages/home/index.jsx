@@ -5,12 +5,16 @@ import { GetMovies } from "../../api/getMovie";
 import MovieCard from "../../components/card/MovieCard";
 import { all } from "axios";
 import './style.css'
+import { getMoviesBySearch } from "../../utils/getMoviesBySearch";
 
 const Home = () => {
     const dispatch = useDispatch();
 
-    const {Movies} = useSelector(state => state.Movies)
+    const {Movies , SearchValue } = useSelector(state => state.Movies)
     // console.log(Movies)
+
+    const filterBySearchName = getMoviesBySearch(Movies,SearchValue);
+
 
     useEffect(()=>{
         dispatch(GetMovies());
@@ -22,7 +26,7 @@ const Home = () => {
         
         <div className="container">
         {
-            Movies?.length > 0 && Movies.map(movie => <MovieCard key={movie.id} movie={movie}/>)
+            filterBySearchName?.length > 0 && filterBySearchName.map(movie => <MovieCard key={movie.id} movie={movie}/>)
         }
         </div>
         </>

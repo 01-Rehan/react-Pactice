@@ -12,14 +12,15 @@ export default function GenreSelect() {
   };
 
   return (
-    <FormControl sx={{ m: 1, minWidth: 120 }} size="small">
-      <InputLabel id="demo-select-small-label">Genre</InputLabel>
+    <FormControl sx={{ m: 1, minWidth: 120 }}  size="small">
+      <InputLabel id="demo-select-small-label" style={{color:'white'}} >Genre</InputLabel>
       <Select
         labelId="demo-select-small-label"
         id="demo-select-small"
         value={age}
-        label="Age"
+        label="age"
         onChange={handleChange}
+        style={{border:'1px solid white'}}
       >
         <MenuItem value="">
           <em>None</em>

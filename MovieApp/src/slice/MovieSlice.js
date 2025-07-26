@@ -9,9 +9,13 @@ const MovieSlice = createSlice({
     reducers : {
         setMovies : (state,action) => {
             state.Movies = action.payload;
+        },
+        setSearchValue : (state,action) => {
+            state.SearchValue = action.payload;
         }
+
     }
 });
 
-export const { setMovies } =  MovieSlice.actions;
+export const { setMovies , setSearchValue } =  MovieSlice.actions;
 export default MovieSlice.reducer;
