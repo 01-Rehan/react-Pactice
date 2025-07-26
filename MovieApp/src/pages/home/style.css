@@ -1,0 +1,22 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+.container {
+  width: 100%;
+  height: max-content;
+  display: flex;
+  gap: 30px;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 40px;
+  color: #dfdfdf;
+  background-color: #0f0f0f;
+}
+@media (max-width:768px){
+    .container{
+        width: 100%;
+    }
+}
