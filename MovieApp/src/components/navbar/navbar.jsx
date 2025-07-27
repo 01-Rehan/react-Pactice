@@ -14,19 +14,23 @@ import { useDispatch, useSelector } from "react-redux";
 import { setSearchValue } from "../../slice/MovieSlice";
 import debounce from "lodash/debounce";
 import { useEffect, useMemo } from "react";
+import "../../style/global.css";
 
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
   borderRadius: theme.shape.borderRadius,
   backgroundColor: alpha(theme.palette.common.white, 0.15),
   "&:hover": {
-    backgroundColor: alpha(theme.palette.common.white, 0.25),
+    backgroundColor: "rgba(255, 255, 255, 0.2)", // Custom hover color
+    borderColor: "rgba(255, 255, 255, 0.4)", // Hover border
+    transform: "scale(1.01)", // Add hover animation
   },
   marginRight: theme.spacing(2),
   marginLeft: 0,
   width: "100%",
+  transition: "all 0.3s ease",
   [theme.breakpoints.up("sm")]: {
-    marginLeft: theme.spacing(3),
+    marginLeft: theme.spacing(2),
     width: "auto",
   },
 }));
@@ -48,9 +52,11 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
     paddingLeft: `calc(1em + ${theme.spacing(4)})`,
     transition: theme.transitions.create("width"),
     width: "100%",
+    
     [theme.breakpoints.up("md")]: {
       width: "20ch",
     },
+    
   },
 }));
 
@@ -83,7 +89,7 @@ export default function Navbar() {
   };
 
   return (
-    <Box sx={{ flexGrow: 1 }}>
+    <Box sx={{ flexGrow: 1 }} className={'Navbar'}>
       <AppBar position="static" style={{ backgroundColor: "black" }}>
         <Toolbar sx={{ display: "flex", justifyContent: "space-between" }}>
           <Box

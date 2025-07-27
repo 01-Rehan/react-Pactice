@@ -3,30 +3,33 @@ import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
-import { useDispatch,useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { setRatingValue } from "../../slice/MovieSlice";
 
 export default function Ratingselect() {
-
   const dispatch = useDispatch();
 
-  const selectedVal = useSelector(state => state.Movies.RatingValue);
+  const selectedVal = useSelector((state) => state.Movies.RatingValue);
 
   const handleChange = (event) => {
     dispatch(setRatingValue(event.target.value));
   };
 
   return (
-    <FormControl sx={{ m: 1, minWidth: 120 }} size="small">
-      <InputLabel id="demo-select-small-label" style={{ color: "white" }}>
+    <FormControl sx={{ m: 1, minWidth: 80 }} size="small">
+      <InputLabel
+        id="demo-simple-select-autowidth-label"
+        style={{ color: "white" }}
+      >
         Rating
       </InputLabel>
       <Select
-        labelId="demo-select-small-label"
-        id="demo-select-small"
+        labelId="demo-simple-select-autowidth-label"
+        id="demo-simple-select-autowidth"
         value={selectedVal || ""}
         label="RatingFilter"
         onChange={handleChange}
+        autoWidth
         style={{ border: "1px solid white" }}
       >
         <MenuItem value="">

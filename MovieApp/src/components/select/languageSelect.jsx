@@ -17,16 +17,17 @@ export default function LanguageSelector() {
   };
 
   return (
-    <FormControl sx={{ m: 1, minWidth: 120 }} size="small">
-      <InputLabel id="demo-select-small-label" style={{ color: "white" }}>
+    <FormControl sx={{ m: 1, minWidth: 100 }} size="small">
+      <InputLabel id="demo-simple-select-autowidth-label" style={{ color: "white" }}>
         Language
       </InputLabel>
       <Select
-        labelId="demo-select-small-label"
-        id="demo-select-small"
+        labelId="demo-simple-select-autowidth-label"
+          id="demo-simple-select-autowidth"
         value={selectedVal || ''}
         label="LanguageFilter"
         onChange={handleChange}
+        autoWidth
         style={{ border: "1px solid white" }}
       >
         <MenuItem value="">

@@ -19,17 +19,18 @@ export default function GenreSelect() {
   
 
   return (
-    <FormControl sx={{ m: 1, minWidth: 120 }} size="small">
-      <InputLabel id="demo-select-small-label" style={{ color: "white" }}>
+    <FormControl sx={{ m: 1, minWidth: 80 }} size="small" >
+      <InputLabel id="demo-simple-select-autowidth-label" style={{ color: "white" }}>
         Genre
       </InputLabel>
       <Select
-        labelId="demo-select-small-label"
-        id="demo-select-small"
+        labelId="demo-simple-select-autowidth-label"
+          id="demo-simple-select-autowidth"
         value={selectedVal || ""}
         label="genre"
         onChange={handleChange}
         style={{ border: "1px solid white" }}
+        autoWidth
       >
         <MenuItem value={''}>
           <em>All</em>
