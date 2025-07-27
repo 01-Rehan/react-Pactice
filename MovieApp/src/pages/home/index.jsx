@@ -1,35 +1,48 @@
 import { useEffect } from "react";
 import Navbar from "../../components/navbar/navbar";
-import { useDispatch,useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { GetMovies } from "../../api/getMovie";
 import MovieCard from "../../components/card/MovieCard";
 import { all } from "axios";
-import './style.css'
-import { getMoviesBySearch } from "../../utils/getMoviesBySearch";
+import "../../style/global.css";
+import { getFilterdMovies } from "../../utils/getMoviesBySearch";
 
 const Home = () => {
-    const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
-    const {Movies , SearchValue } = useSelector(state => state.Movies)
-    // console.log(Movies)
+  const { Movies, SearchValue, GenreValue, LanguageValue ,RatingValue} = useSelector(
+    (state) => state.Movies
+  );
+  // console.log(Movies)
 
-    const filterBySearchName = getMoviesBySearch(Movies,SearchValue);
+  const filterMovies = getFilterdMovies(
+    Movies,
+    SearchValue,
+    GenreValue,
+    LanguageValue,
+    RatingValue
+  );
+  // console.log(GenreValue);
+  // console.log(LanguageValue);
 
+  useEffect(() => {
+    dispatch(GetMovies());
+  }, [dispatch]);
 
-    useEffect(()=>{
-        dispatch(GetMovies());
-    },[]);
+  return (
+    <>
+      <Navbar />
 
-    return (
-        <>
-        <Navbar />
-        
-        <div className="container">
-        {
-            filterBySearchName?.length > 0 && filterBySearchName.map(movie => <MovieCard key={movie.id} movie={movie}/>)
-        }
-        </div>
-        </>
-    )
-}
+      <div className="container">
+        {filterMovies?.length > 0 ? (
+          filterMovies.map((movie) => (
+            <MovieCard key={movie.id} movie={movie} />
+          ))
+        ) : (
+          <p style={{ color: "white" }}>No movies found</p>
+        )}
+      </div>
+    </>
+  );
+};
 export default Home;

@@ -21,7 +21,7 @@ export const GetMovies = () => async (dispatch) => {
       allmovies = [...allmovies,...data.results]
     }
     dispatch(setMovies(allmovies));
-    console.log(allmovies)
+    // console.log(allmovies)
   } catch (err) {
     console.log(err);
   }

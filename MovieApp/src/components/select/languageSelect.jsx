@@ -3,12 +3,17 @@ import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
+import { useDispatch,useSelector } from "react-redux";
+import { setLanguageValue } from "../../slice/MovieSlice";
 
 export default function LanguageSelector() {
-  const [age, setAge] = React.useState("");
+
+  const dispatch = useDispatch();
+
+  const selectedVal = useSelector(state => state.Movies.LanguageValue);
 
   const handleChange = (event) => {
-    setAge(event.target.value);
+    dispatch(setLanguageValue(event.target.value));
   };
 
   return (
@@ -19,13 +24,13 @@ export default function LanguageSelector() {
       <Select
         labelId="demo-select-small-label"
         id="demo-select-small"
-        value={age}
-        label="Age"
+        value={selectedVal || ''}
+        label="LanguageFilter"
         onChange={handleChange}
         style={{ border: "1px solid white" }}
       >
         <MenuItem value="">
-          <em>None</em>
+          <em>All</em>
         </MenuItem>
         <MenuItem value="en">English</MenuItem>
         <MenuItem value="ja">Japanese</MenuItem>

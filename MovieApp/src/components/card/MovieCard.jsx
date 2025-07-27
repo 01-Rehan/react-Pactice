@@ -1,5 +1,5 @@
 import React from "react";
-import "./moviecard.css";
+import "../../style/global.css";
 
 const MovieCards = ({ movie }) => {
   const {
@@ -51,7 +51,7 @@ const MovieCards = ({ movie }) => {
         <div className="info">
           <p className="heading">{original_title}</p>
           <p>Language: {original_language}</p>
-          {getGenreNames(movie.genre_ids).map((genre, index) => (
+          {getGenreNames(movie.genre_ids).map((genre) => (
           <span>{genre} - </span>
           ))}
           <p className="description">Rating: {vote_average.toFixed(1)}</p>
