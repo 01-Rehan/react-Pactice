@@ -3,10 +3,8 @@ import { setMovies } from "../slice/MovieSlice";
 import { useEffect } from "react";
 
 export const GetMovies = () => async (dispatch) => {
-  // const api = "c083e2f95a6317ae05910d55cec56315";      //used this for fetching a single page from the TMBd's movie database 
-  // const url = `https://api.themoviedb.org/3/movie/popular?api_key=${api}`;
 
-  const API_KEY = "c083e2f95a6317ae05910d55cec56315";
+  const API_KEY = "";     // Add Api key here (get it from TMDb's website )
   const BASE_URL = "https://api.themoviedb.org/3/discover/movie";
 
   try {
